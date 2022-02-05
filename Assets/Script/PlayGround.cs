@@ -12,7 +12,7 @@ public class PlayGround : MonoBehaviour
     public GameObject cameraPrefab;
     static public PlayGround globalPlayGround;
     public const int TICK_COUNT = 100;
-    public const int MOVE_FRAME = 10;
+    public const int MOVE_FRAME = 20;
 
     void Start()
     {
@@ -66,6 +66,7 @@ public class PlayGround : MonoBehaviour
         if(playerContainer.ContainsKey(id))
         {
             Player player = playerContainer[id];
+
             if(player.moveCoroutine != null)
             {
                 StopCoroutine(player.moveCoroutine);
@@ -78,6 +79,7 @@ public class PlayGround : MonoBehaviour
         if(projectileContainer.ContainsKey(id))
         {
             Projectile projectile = projectileContainer[id];
+
             if(projectile.moveCoroutine != null)
             {
                 StopCoroutine(projectile.moveCoroutine);

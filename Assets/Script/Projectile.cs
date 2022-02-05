@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Projectile : MonoBehaviour
+public class Projectile
 {
     private GameObject gameObject;
     public Coroutine moveCoroutine;

@@ -61,10 +61,6 @@ public class JoystickManager : MonoBehaviour
             {
                 dir = Orc.Direction.South;
             }
-            else
-            {
-                dir = Orc.Direction.NoneDir;
-            }
         }
 
         if (dir != currDir)

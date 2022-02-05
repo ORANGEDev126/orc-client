@@ -8,7 +8,7 @@ using Google.Protobuf;
 
 public class Network : MonoBehaviour
 {
-    public const int MAX_READ_BUFFER_SIZE = 512;
+    public const int MAX_READ_BUFFER_SIZE = 65536;
     public const int PACKET_LENGTH_FIELD_SIZE = 4;
     public const int PACKET_PROTOCOL_SIZE = 4;
     public const int HEADER_LENGTH = PACKET_LENGTH_FIELD_SIZE + PACKET_PROTOCOL_SIZE;
@@ -99,8 +99,5 @@ public class Network : MonoBehaviour
         Array.Copy(serializedMessage, 0, writeBuf, HEADER_LENGTH, serializedMessage.Length);
 
         stream.Write(writeBuf, 0, writeBuf.Length);
-
-        Debug.Log("[Network] send message " + message.ToString()
-            + "packet length : " + packetLength.ToString());
     }
 }
