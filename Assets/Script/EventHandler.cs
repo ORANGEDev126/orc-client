@@ -21,8 +21,8 @@ public class EventHandler
 
     public static void HandleLeaveNoti(byte[] packet)
     {
-        Orc.LeavePlayerNotiMessage message =
-            Orc.LeavePlayerNotiMessage.Parser.ParseFrom(packet);
+        Orc.LeaveObjectNotiMessage message =
+            Orc.LeaveObjectNotiMessage.Parser.ParseFrom(packet);
 
         PlayGround.globalPlayGround.Leave(message.Id);
     }

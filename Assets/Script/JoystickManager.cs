@@ -8,7 +8,7 @@ public class JoystickManager : MonoBehaviour
     public Network network;
 
     private Orc.Direction currDir = Orc.Direction.NoneDir;
-    public const double GUIAD_VALUE = 0.3;
+    public const double THRESHOLD = 0.3;
 
     // Start is called before the first frame update
     void Start()
@@ -21,13 +21,13 @@ public class JoystickManager : MonoBehaviour
     {
         var dir = Orc.Direction.NoneDir;
 
-        if(joystick.Horizontal > GUIAD_VALUE)
+        if(joystick.Horizontal > THRESHOLD)
         {
-            if(joystick.Vertical > GUIAD_VALUE)
+            if(joystick.Vertical > THRESHOLD)
             {
                 dir = Orc.Direction.NorthEast;
             }
-            else if(joystick.Vertical < -GUIAD_VALUE)
+            else if(joystick.Vertical < -THRESHOLD)
             {
                 dir = Orc.Direction.EastSouth;
             }
@@ -36,13 +36,13 @@ public class JoystickManager : MonoBehaviour
                 dir = Orc.Direction.East;
             }
         }
-        else if(joystick.Horizontal < -GUIAD_VALUE)
+        else if(joystick.Horizontal < -THRESHOLD)
         {
-            if (joystick.Vertical > GUIAD_VALUE)
+            if (joystick.Vertical > THRESHOLD)
             {
                 dir = Orc.Direction.WestNorth;
             }
-            else if (joystick.Vertical < -GUIAD_VALUE)
+            else if (joystick.Vertical < -THRESHOLD)
             {
                 dir = Orc.Direction.SouthWest;
             }
@@ -53,11 +53,11 @@ public class JoystickManager : MonoBehaviour
         }
         else
         {
-            if (joystick.Vertical > GUIAD_VALUE)
+            if (joystick.Vertical > THRESHOLD)
             {
                 dir = Orc.Direction.North;
             }
-            else if (joystick.Vertical < -GUIAD_VALUE)
+            else if (joystick.Vertical < -THRESHOLD)
             {
                 dir = Orc.Direction.South;
             }

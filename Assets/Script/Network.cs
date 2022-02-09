@@ -34,7 +34,7 @@ public class Network : MonoBehaviour
         Handler[Orc.Protocol.EnterPlayerNoti] = EventHandler.HandlePlayerEnterNoti;
         Handler[Orc.Protocol.MoveObjectNoti] = EventHandler.HandleMoveNoti;
         Handler[Orc.Protocol.WelcomePlayerNoti] = EventHandler.HandleWelcomeNoti;
-        Handler[Orc.Protocol.LeavePlayerNoti] = EventHandler.HandleLeaveNoti;
+        Handler[Orc.Protocol.LeaveObjecNoti] = EventHandler.HandleLeaveNoti;
         Handler[Orc.Protocol.EnterProjectileNoti] = EventHandler.HandleProjectileEnterNoti;
         PacketHandler handleProjectileAttackNoti = EventHandler.HandleProjectileAttackNoti;
         Handler[Orc.Protocol.ProjectileAttackNoti] = EventHandler.HandleProjectileAttackNoti;
