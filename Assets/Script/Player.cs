@@ -24,16 +24,16 @@ public class Player
         float currX = gameObject.transform.position.x;
         float currY = gameObject.transform.position.y;
         
-        if(dir == Orc.Direction.East || dir == Orc.Direction.EastSouth ||
-            dir == Orc.Direction.NorthEast)
-        {
-            gameObject.GetComponent<SpriteRenderer>().flipX = true;
-        }
-        else if(dir == Orc.Direction.West || dir == Orc.Direction.WestNorth ||
-            dir == Orc.Direction.SouthWest)
-        {
-            gameObject.GetComponent<SpriteRenderer>().flipX = false;
-        }
+        //if(dir == Orc.Direction.East || dir == Orc.Direction.EastSouth ||
+        //    dir == Orc.Direction.NorthEast)
+        //{
+        //    gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        //}
+        //else if(dir == Orc.Direction.West || dir == Orc.Direction.WestNorth ||
+        //    dir == Orc.Direction.SouthWest)
+        //{
+        //    gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        //}
 
         if(currX == x && currY == y)
         {
