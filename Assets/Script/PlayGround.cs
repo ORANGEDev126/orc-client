@@ -29,8 +29,8 @@ public class PlayGround : MonoBehaviour
             MyID = msg.Id;
             GameObject cameraObject = (GameObject)Instantiate(cameraPrefab);
             cameraObject.transform.SetParent(playerObject.transform);
-            cameraObject.transform.localPosition = new Vector3(0, 0, -20);
-            cameraObject.transform.localRotation = Quaternion.identity;
+            cameraObject.transform.localPosition = new Vector3(0, 5, -20);
+            cameraObject.transform.localRotation = Quaternion.LookRotation(playerObject.transform.localPosition - cameraObject.transform.localPosition);
         }
 
         Player player = new Player(playerObject);
