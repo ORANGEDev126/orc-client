@@ -20,23 +20,23 @@ public class Projectile
         UnityEngine.Object.Destroy(gameObject);
     }
 
-    public IEnumerator MoveCoroutine(float x, float y)
+    public IEnumerator MoveCoroutine(float x, float z)
     {
         float currX = gameObject.transform.position.x;
-        float currY = gameObject.transform.position.y;
+        float currZ = gameObject.transform.position.z;
 
-        if (currX == x && currY == y)
+        if (currX == x && currZ == z)
         {
             moveCoroutine = null;
             yield break;
         }
 
         float deltaX = (x - currX) / (PlayGround.TICK_COUNT / PlayGround.MOVE_FRAME);
-        float deltaY = (y - currY) / (PlayGround.TICK_COUNT / PlayGround.MOVE_FRAME);
+        float deltaZ = (z - currZ) / (PlayGround.TICK_COUNT / PlayGround.MOVE_FRAME);
 
         for (int i = 0; i < PlayGround.TICK_COUNT / PlayGround.MOVE_FRAME; i++)
         {
-            gameObject.transform.Translate(new Vector2(deltaX, deltaY));
+            gameObject.transform.Translate(new Vector3(deltaX, 0, deltaZ));
             yield return new WaitForSeconds((float)PlayGround.MOVE_FRAME / (float)1000);
         }
 

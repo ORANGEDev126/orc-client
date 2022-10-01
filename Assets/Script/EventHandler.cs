@@ -35,7 +35,7 @@ public class EventHandler
         foreach(Orc.MoveObjectNotiMessage.Types.Object movedObject in message.Objects)
         {
             PlayGround.globalPlayGround.Move(movedObject.Id,
-                new Vector3((float)movedObject.X, (float)movedObject.Y, 0),
+                new Vector3((float)movedObject.X, 0, (float)movedObject.Y),
                 movedObject.Dir);
         }
     }

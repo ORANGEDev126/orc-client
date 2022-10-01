@@ -19,23 +19,19 @@ public class Player
         UnityEngine.Object.Destroy(gameObject);
     }
 
-    public IEnumerator MoveCoroutine(float x, float y, Orc.Direction dir)
+    private float GetRotator(Orc.Direction dir)
+    {
+        return 360.0f / 8 * ((int)dir - 1);
+    }
+
+    public IEnumerator MoveCoroutine(float x, float z, Orc.Direction dir)
     {
         float currX = gameObject.transform.position.x;
-        float currY = gameObject.transform.position.y;
-        
-        //if(dir == Orc.Direction.East || dir == Orc.Direction.EastSouth ||
-        //    dir == Orc.Direction.NorthEast)
-        //{
-        //    gameObject.GetComponent<SpriteRenderer>().flipX = true;
-        //}
-        //else if(dir == Orc.Direction.West || dir == Orc.Direction.WestNorth ||
-        //    dir == Orc.Direction.SouthWest)
-        //{
-        //    gameObject.GetComponent<SpriteRenderer>().flipX = false;
-        //}
+        float currZ = gameObject.transform.position.z;
 
-        if(currX == x && currY == y)
+        gameObject.transform.eulerAngles = new Vector3(0, GetRotator(dir), 0);
+
+        if(currX == x && currZ == z)
         {
             moveCoroutine = null;
             yield break;
@@ -44,11 +40,12 @@ public class Player
         animator.Play("Move");
 
         float deltaX = (x - currX) / (PlayGround.TICK_COUNT / PlayGround.MOVE_FRAME);
-        float deltaY = (y - currY) / (PlayGround.TICK_COUNT / PlayGround.MOVE_FRAME);
+        float deltaZ = (z - currZ) / (PlayGround.TICK_COUNT / PlayGround.MOVE_FRAME);
 
         for(int i = 0; i < PlayGround.TICK_COUNT / PlayGround.MOVE_FRAME; i++)
         {
-            gameObject.transform.Translate(new Vector2(deltaX, deltaY));
+            gameObject.transform.Translate(new Vector3(deltaX, 0, deltaZ), Space.World);
+           
             yield return new WaitForSeconds((float)PlayGround.MOVE_FRAME / (float)1000);
         }
 

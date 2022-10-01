@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9061ae3c4f3f44f5ab9721d7ee8cb545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultPlayerPrefab: {fileID: 6198568010494722300, guid: c852f698d83f30b458fd81f74a906e21, type: 3}
+  defaultPlayerPrefab: {fileID: 8189980434977739222, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
   defaultProjectilePrefab: {fileID: 6422272237677945890, guid: 4ac41add66f05417eafabcde920e0320, type: 3}
   cameraPrefab: {fileID: 9082110607540992557, guid: e8de7b3079bbb47a6a665527ecde6b83, type: 3}
 --- !u!114 &895468879
@@ -840,8 +840,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1879477834}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5}
-  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalScale: {x: 100, y: 1, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

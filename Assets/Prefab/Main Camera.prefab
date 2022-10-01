@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9082110607540992721}
   - component: {fileID: 9082110607540992558}
   - component: {fileID: 9082110607540992556}
+  - component: {fileID: -2827280919132484718}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -25,13 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9082110607540992557}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: 0.5624222, y: 0.3036032, z: -0.23296289, w: 0.73296297}
+  m_LocalPosition: {x: -5, y: 25, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 75, y: 45, z: 0}
 --- !u!20 &9082110607540992558
 Camera:
   m_ObjectHideFlags: 0
@@ -46,9 +48,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -83,3 +93,15 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9082110607540992557}
   m_Enabled: 1
+--- !u!114 &-2827280919132484718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9082110607540992557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab96007f235cd6498f3fb0bbb36914e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -22,15 +22,13 @@ public class PlayGround : MonoBehaviour
     public void EnterPlayer(Orc.PlayerMessage msg, bool isSelf)
     {
         GameObject playerObject = (GameObject)Instantiate(defaultPlayerPrefab,
-            new Vector3((float)msg.X, (float)msg.Y, 0), Quaternion.identity);
+            new Vector3((float)msg.X, 0, (float)msg.Y), Quaternion.identity);
         
         if (isSelf)
         {
             MyID = msg.Id;
             GameObject cameraObject = (GameObject)Instantiate(cameraPrefab);
-            cameraObject.transform.SetParent(playerObject.transform);
-            cameraObject.transform.localPosition = new Vector3(0, 5, -20);
-            cameraObject.transform.localRotation = Quaternion.LookRotation(playerObject.transform.localPosition - cameraObject.transform.localPosition);
+            cameraObject.GetComponent<CameraAction>().SetTarget(playerObject);
         }
 
         Player player = new Player(playerObject);
@@ -40,7 +38,7 @@ public class PlayGround : MonoBehaviour
     public void EnterProjectile(Orc.ProjectileMessage msg)
     {
         GameObject projectileObject = (GameObject)Instantiate(defaultProjectilePrefab,
-            new Vector3((float)msg.X, (float)msg.Y, 0), Quaternion.identity);
+            new Vector3((float)msg.X, 0, (float)msg.Y), Quaternion.identity);
 
         Projectile projectile = new Projectile(projectileObject);
         projectileContainer.Add(msg.Id, projectile);
@@ -73,7 +71,7 @@ public class PlayGround : MonoBehaviour
             }
 
             player.moveCoroutine = StartCoroutine(
-                player.MoveCoroutine(point.x, point.y, dir));
+                player.MoveCoroutine(point.x, point.z, dir));
         }
 
         if(projectileContainer.ContainsKey(id))
@@ -86,7 +84,7 @@ public class PlayGround : MonoBehaviour
             }
 
             projectile.moveCoroutine = StartCoroutine(
-                projectile.MoveCoroutine(point.x, point.y));
+                projectile.MoveCoroutine(point.x, point.z));
         }
     }
 
