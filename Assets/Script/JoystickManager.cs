@@ -69,7 +69,7 @@ public class JoystickManager : MonoBehaviour
             Orc.MoveJogReqMessage message = new Orc.MoveJogReqMessage();
             message.Dir = currDir;
 
-            network.SendProtoMessage(Orc.Protocol.MoveJogReq, message);
+            network.SendProtoMessage(Orc.Request.MoveJogReq, message);
         }
     }
 }
