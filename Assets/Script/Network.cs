@@ -22,7 +22,7 @@ public class Network : MonoBehaviour
 
     public string ServerIP = "127.0.0.1";
     public int ServerPort = 1004;
-    public Dictionary<Orc.Protocol, PacketHandler> Handler = new Dictionary<Orc.Protocol, PacketHandler>();
+    public Dictionary<Orc.Notification, PacketHandler> Handler = new Dictionary<Orc.Notification, PacketHandler>();
 
     // Start is called before the first frame update
     void Start()
@@ -31,13 +31,13 @@ public class Network : MonoBehaviour
         stream = tcpClient.GetStream();
         Debug.Log("[Network] connect to server");
 
-        Handler[Orc.Protocol.EnterPlayerNoti] = EventHandler.HandlePlayerEnterNoti;
-        Handler[Orc.Protocol.MoveObjectNoti] = EventHandler.HandleMoveNoti;
-        Handler[Orc.Protocol.WelcomePlayerNoti] = EventHandler.HandleWelcomeNoti;
-        Handler[Orc.Protocol.LeaveObjecNoti] = EventHandler.HandleLeaveNoti;
-        Handler[Orc.Protocol.EnterProjectileNoti] = EventHandler.HandleProjectileEnterNoti;
-        PacketHandler handleProjectileAttackNoti = EventHandler.HandleProjectileAttackNoti;
-        Handler[Orc.Protocol.ProjectileAttackNoti] = EventHandler.HandleProjectileAttackNoti;
+        Handler[Orc.Notification.EnterPlayerNoti] = EventHandler.HandlePlayerEnterNoti;
+        Handler[Orc.Notification.MoveObjectNoti] = EventHandler.HandleMoveNoti;
+        Handler[Orc.Notification.WelcomePlayerNoti] = EventHandler.HandleWelcomeNoti;
+        Handler[Orc.Notification.LeaveObjectNoti] = EventHandler.HandleLeaveNoti;
+        Handler[Orc.Notification.EnterProjectileNoti] = EventHandler.HandleProjectileEnterNoti;
+        Handler[Orc.Notification.ProjectileAttackNoti] = EventHandler.HandleProjectileAttackNoti;
+        Handler[Orc.Notification.ProjectileAttackNoti] = EventHandler.HandleProjectileAttackNoti;
     }
 
     // Update is called once per frame
@@ -50,7 +50,7 @@ public class Network : MonoBehaviour
             while (readSize > HEADER_LENGTH)
             {
                 int packetLength = BitConverter.ToInt32(readBuf, 0);
-                Orc.Protocol protocolID = (Orc.Protocol)BitConverter.ToInt32(readBuf, PACKET_LENGTH_FIELD_SIZE);
+                Orc.Notification protocolID = (Orc.Notification)BitConverter.ToInt32(readBuf, PACKET_LENGTH_FIELD_SIZE);
                 
                 if (readSize < packetLength)
                 {
@@ -75,7 +75,7 @@ public class Network : MonoBehaviour
         }
     }
 
-    public void SendProtoMessage(Orc.Protocol id, Google.Protobuf.IMessage message)
+    public void SendProtoMessage(Orc.Request id, Google.Protobuf.IMessage message)
     {
         if(stream == null)
         {

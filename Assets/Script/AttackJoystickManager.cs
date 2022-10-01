@@ -34,7 +34,7 @@ public class AttackJoystickManager : MonoBehaviour
         {
             var message = new Orc.ShootProjectileReqMessage();
             message.Angle = angle.Value;
-            network.SendProtoMessage(Orc.Protocol.ShootProjectileReq, message);
+            network.SendProtoMessage(Orc.Request.ShootProjectileReq, message);
             angle = null;
         }
     }
