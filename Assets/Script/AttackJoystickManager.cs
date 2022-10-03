@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class AttackJoystickManager : MonoBehaviour
 {
-    public Joystick joystick;
+    public FixedJoystick joystick;
     public Network network;
 
     public const double DRAW_THRESHOLD = 0.5;
     public const double SHOOT_THREADHOLD = 0.3;
     private int? angle;
 
+    private void Start()
+    {
+        joystick.handleInputCallback = HandleInput;
+        joystick.handleInputUpCallback = HandleUp;
+    }
     void Update()
     {
-        var currVec = new Vector2(joystick.Horizontal, joystick.Vertical);
-        if(Vector2.Distance(currVec, Vector2.zero) > DRAW_THRESHOLD)
+    }
+    private void HandleInput(float magnitude, Vector2 normal)
+    {
+        var currVec = normal;
+        if (magnitude > DRAW_THRESHOLD)
         {
             var signedAngle = Vector2.SignedAngle(currVec, Vector2.right);
             if (signedAngle < 0)
@@ -28,14 +36,24 @@ public class AttackJoystickManager : MonoBehaviour
 
             return;
         }
+    }
 
-        if(Vector2.Distance(currVec, Vector2.zero) < SHOOT_THREADHOLD &&
-            angle.HasValue)
+    private void HandleUp(Vector2 deltaPosition)
+    {
+        if (Vector2.Distance(deltaPosition, Vector2.zero) < SHOOT_THREADHOLD)
         {
-            var message = new Orc.ShootProjectileReqMessage();
-            message.Angle = angle.Value;
-            network.SendProtoMessage(Orc.Request.ShootProjectileReq, message);
-            angle = null;
+            if (angle.HasValue)
+            {
+                var message = new Orc.ShootProjectileReqMessage();
+                message.Angle = angle.Value;
+                network.SendProtoMessage(Orc.Request.ShootProjectileReq, message);
+            }
+            else
+            {
+                var message = new Orc.AttackReqMessage();
+                network.SendProtoMessage(Orc.Request.AttackReq, message);
+            }
         }
+        angle = null;
     }
 }

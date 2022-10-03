@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JoystickManager : MonoBehaviour
 {
-    public Joystick joystick;
+    public FixedJoystick joystick;
     public Network network;
 
     private Orc.Direction currDir = Orc.Direction.NoneDir;
@@ -13,21 +13,20 @@ public class JoystickManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        joystick.handleInputCallback = HandleInput;
     }
 
-    // Update is called once per frame
-    void Update()
+    Orc.Direction GetDirection()
     {
         var dir = Orc.Direction.NoneDir;
 
-        if(joystick.Horizontal > THRESHOLD)
+        if (joystick.Horizontal > THRESHOLD)
         {
-            if(joystick.Vertical > THRESHOLD)
+            if (joystick.Vertical > THRESHOLD)
             {
                 dir = Orc.Direction.NorthEast;
             }
-            else if(joystick.Vertical < -THRESHOLD)
+            else if (joystick.Vertical < -THRESHOLD)
             {
                 dir = Orc.Direction.EastSouth;
             }
@@ -36,7 +35,7 @@ public class JoystickManager : MonoBehaviour
                 dir = Orc.Direction.East;
             }
         }
-        else if(joystick.Horizontal < -THRESHOLD)
+        else if (joystick.Horizontal < -THRESHOLD)
         {
             if (joystick.Vertical > THRESHOLD)
             {
@@ -62,7 +61,17 @@ public class JoystickManager : MonoBehaviour
                 dir = Orc.Direction.South;
             }
         }
+        return dir;
+    }
+    // Update is called once per frame
+    void Update()
+    {
 
+    }
+
+    private void HandleInput(float magnitude, Vector2 normal)
+    {
+        var dir = GetDirection();
         if (dir != currDir)
         {
             currDir = dir;

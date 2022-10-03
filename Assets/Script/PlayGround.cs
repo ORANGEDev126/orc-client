@@ -105,4 +105,15 @@ public class PlayGround : MonoBehaviour
         StartCoroutine(projectileContainer[projectileId].DestoryProjectile());
         projectileContainer.Remove(projectileId);
     }
+
+    public void AttackPlayer(long playerId)
+    {
+        if (!playerContainer.ContainsKey(playerId))
+        {
+            Debug.Log("there is no player id when projectile attacked");
+            return;
+        }
+
+        playerContainer[playerId].Attack();
+    }
 }

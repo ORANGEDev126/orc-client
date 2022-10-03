@@ -37,7 +37,7 @@ public class Player
             yield break;
         }
 
-        animator.Play("Move");
+        animator.SetBool("Walk", true);
 
         float deltaX = (x - currX) / (PlayGround.TICK_COUNT / PlayGround.MOVE_FRAME);
         float deltaZ = (z - currZ) / (PlayGround.TICK_COUNT / PlayGround.MOVE_FRAME);
@@ -49,7 +49,12 @@ public class Player
             yield return new WaitForSeconds((float)PlayGround.MOVE_FRAME / (float)1000);
         }
 
-        animator.Play("Idle");
+        animator.SetBool("Walk", false);
         moveCoroutine = null;
+    }
+
+    public void Attack()
+    {
+        animator.SetBool("Attack", true);
     }
 }
