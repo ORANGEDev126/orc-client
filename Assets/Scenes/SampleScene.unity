@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultPlayerPrefab: {fileID: 8189980434977739222, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
-  defaultProjectilePrefab: {fileID: 6422272237677945890, guid: 4ac41add66f05417eafabcde920e0320, type: 3}
+  defaultProjectilePrefab: {fileID: 5800160979831887756, guid: 8c1271cc6019e704bb466ef31009902f, type: 3}
   cameraPrefab: {fileID: 9082110607540992557, guid: e8de7b3079bbb47a6a665527ecde6b83, type: 3}
 --- !u!114 &895468879
 MonoBehaviour:
