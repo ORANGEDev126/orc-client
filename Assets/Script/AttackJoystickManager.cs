@@ -40,19 +40,19 @@ public class AttackJoystickManager : MonoBehaviour
 
     private void HandleUp(Vector2 deltaPosition)
     {
-        if (Vector2.Distance(deltaPosition, Vector2.zero) < SHOOT_THREADHOLD)
+        if (angle.HasValue)
         {
-            if (angle.HasValue)
+            if (deltaPosition.magnitude > SHOOT_THREADHOLD)
             {
                 var message = new Orc.ShootProjectileReqMessage();
                 message.Angle = angle.Value;
                 network.SendProtoMessage(Orc.Request.ShootProjectileReq, message);
             }
-            else
-            {
-                var message = new Orc.AttackReqMessage();
-                network.SendProtoMessage(Orc.Request.AttackReq, message);
-            }
+        }
+        else
+        {
+            var message = new Orc.AttackReqMessage();
+            network.SendProtoMessage(Orc.Request.AttackReq, message);
         }
         angle = null;
     }
