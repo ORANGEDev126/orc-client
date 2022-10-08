@@ -14,9 +14,11 @@ public class Projectile
     public IEnumerator DestoryProjectile()
     {
         var animator = gameObject.GetComponent<Animator>();
-        animator.Play("Destroy");
+        if (animator != null)
+        {
+            animator.Play("Destroy");
+        }
         yield return new WaitForSeconds((float)0.5);
-
         UnityEngine.Object.Destroy(gameObject);
     }
 
