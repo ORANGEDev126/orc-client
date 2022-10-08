@@ -38,6 +38,7 @@ public class Network : MonoBehaviour
         Handler[Orc.Notification.EnterProjectileNoti] = EventHandler.HandleProjectileEnterNoti;
         Handler[Orc.Notification.ProjectileAttackNoti] = EventHandler.HandleProjectileAttackNoti;
         Handler[Orc.Notification.AttackPlayerNoti] = EventHandler.HandleAttackPlayerNoti;
+        Handler[Orc.Notification.PlayerAttackedNoti] = EventHandler.HandlePlayerAttackedNoti;
     }
 
     // Update is called once per frame

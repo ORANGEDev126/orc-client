@@ -65,4 +65,10 @@ public class EventHandler
         PlayGround.globalPlayGround.AttackPlayer(message.PlayerId);
 
     }
+
+    public static void HandlePlayerAttackedNoti(byte[] packet)
+    {
+        Orc.PlayerAttackedNotiMessage message = Orc.PlayerAttackedNotiMessage.Parser.ParseFrom(packet);
+        PlayGround.globalPlayGround.BePlayerAttacked(message.PlayerId);
+    }
 }

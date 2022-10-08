@@ -70,8 +70,6 @@ public class PlayGround : MonoBehaviour
                 StopCoroutine(player.moveCoroutine);
             }
 
-            Debug.Log(string.Format("({0},{1}) dir : {2}", point.x, point.z, dir));
-
             player.moveCoroutine = StartCoroutine(
                 player.MoveCoroutine(point.x, point.z, dir));
         }
@@ -117,5 +115,14 @@ public class PlayGround : MonoBehaviour
         }
 
         playerContainer[playerId].Attack();
+    }
+
+    public void BePlayerAttacked(long playerId)
+    {
+        if(!playerContainer.ContainsKey(playerId))
+        {
+            return;
+        }
+        playerContainer[playerId].Hit();
     }
 }

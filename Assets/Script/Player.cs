@@ -57,4 +57,9 @@ public class Player
     {
         animator.SetBool("Attack", true);
     }
+
+    public void Hit()
+    {
+        animator.SetBool("Hit", true);
+    }
 }
