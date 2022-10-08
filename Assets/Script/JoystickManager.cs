@@ -14,6 +14,7 @@ public class JoystickManager : MonoBehaviour
     void Start()
     {
         joystick.handleInputCallback = HandleInput;
+        joystick.handleInputUpCallback = HandleUp;
     }
 
     Orc.Direction GetDirection()
@@ -80,5 +81,12 @@ public class JoystickManager : MonoBehaviour
 
             network.SendProtoMessage(Orc.Request.MoveJogReq, message);
         }
+    }
+
+    private void HandleUp(Vector2 deltaPosition)
+    {
+        Orc.MoveJogReqMessage message = new Orc.MoveJogReqMessage();
+        message.Dir = Orc.Direction.NoneDir;
+        network.SendProtoMessage(Orc.Request.MoveJogReq, message);
     }
 }
