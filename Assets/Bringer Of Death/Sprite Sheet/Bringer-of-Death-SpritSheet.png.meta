@@ -339,7 +339,7 @@ TextureImporter:
       213: 4244574736091753856
     second: Bringer-of-Death-SpritSheet_111
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -356,10 +356,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -398,6 +400,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -437,6 +441,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -2812,9 +2828,121 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Bringer-of-Death-SpritSheet_90: 393222857500541420
+      Bringer-of-Death-SpritSheet_12: -2137382666133240926
+      Bringer-of-Death-SpritSheet_26: 4072241969498346569
+      Bringer-of-Death-SpritSheet_48: 29702762353113097
+      Bringer-of-Death-SpritSheet_95: 4062003485679954267
+      Bringer-of-Death-SpritSheet_67: -6167708491202129637
+      Bringer-of-Death-SpritSheet_100: 946013011605069419
+      Bringer-of-Death-SpritSheet_36: -8721093536611414691
+      Bringer-of-Death-SpritSheet_47: 3879292089760221355
+      Bringer-of-Death-SpritSheet_55: 7592883989416276412
+      Bringer-of-Death-SpritSheet_74: -3507545047721005131
+      Bringer-of-Death-SpritSheet_18: -422922510760239427
+      Bringer-of-Death-SpritSheet_24: 2483782727947890954
+      Bringer-of-Death-SpritSheet_75: 4179657434126779450
+      Bringer-of-Death-SpritSheet_61: 3976960032240018065
+      Bringer-of-Death-SpritSheet_29: -8645012906986925910
+      Bringer-of-Death-SpritSheet_44: -6416028094590494610
+      Bringer-of-Death-SpritSheet_34: 1900342803882551889
+      Bringer-of-Death-SpritSheet_73: -3242667579502989461
+      Bringer-of-Death-SpritSheet_86: -7202626136720815718
+      Bringer-of-Death-SpritSheet_111: 4244574736091753856
+      Bringer-of-Death-SpritSheet_93: -6477363709567818619
+      Bringer-of-Death-SpritSheet_7: 8079674775554739003
+      Bringer-of-Death-SpritSheet_70: 5268984078305060529
+      Bringer-of-Death-SpritSheet_8: 6233496440514900867
+      Bringer-of-Death-SpritSheet_80: 2054057268913083600
+      Bringer-of-Death-SpritSheet_96: 1206823848250521534
+      Bringer-of-Death-SpritSheet_42: 1887337606458979207
+      Bringer-of-Death-SpritSheet_58: 6754218284649242354
+      Bringer-of-Death-SpritSheet_53: -3351220719838747524
+      Bringer-of-Death-SpritSheet_3: 8707107778256294047
+      Bringer-of-Death-SpritSheet_32: -643843233168925960
+      Bringer-of-Death-SpritSheet_6: 8118819912966400158
+      Bringer-of-Death-SpritSheet_41: -6342980997288685656
+      Bringer-of-Death-SpritSheet_49: 8687428498307349624
+      Bringer-of-Death-SpritSheet_25: 3687449107416671509
+      Bringer-of-Death-SpritSheet_106: -8487232043859119557
+      Bringer-of-Death-SpritSheet_101: -4959259612182860334
+      Bringer-of-Death-SpritSheet_109: 1065581595387641193
+      Bringer-of-Death-SpritSheet_54: -953707883773386096
+      Bringer-of-Death-SpritSheet_59: -8457060507731139865
+      Bringer-of-Death-SpritSheet_50: -5379403063917420916
+      Bringer-of-Death-SpritSheet_52: 6565450280992480206
+      Bringer-of-Death-SpritSheet_19: 6631781949004943560
+      Bringer-of-Death-SpritSheet_35: -6959215256267499731
+      Bringer-of-Death-SpritSheet_46: 8403998346646135688
+      Bringer-of-Death-SpritSheet_81: 5267712945784507343
+      Bringer-of-Death-SpritSheet_88: 3673236696602376170
+      Bringer-of-Death-SpritSheet_65: 3660635505352458090
+      Bringer-of-Death-SpritSheet_103: -4998798509716206269
+      Bringer-of-Death-SpritSheet_76: -4584646495297105994
+      Bringer-of-Death-SpritSheet_83: -5247348911507656987
+      Bringer-of-Death-SpritSheet_51: -1332470889934944754
+      Bringer-of-Death-SpritSheet_71: -4756796676063924051
+      Bringer-of-Death-SpritSheet_110: 6108343427805502475
+      Bringer-of-Death-SpritSheet_9: 6185124051430620655
+      Bringer-of-Death-SpritSheet_66: -1504879836324737053
+      Bringer-of-Death-SpritSheet_91: 4343592893084976045
+      Bringer-of-Death-SpritSheet_5: 28493216337309425
+      Bringer-of-Death-SpritSheet_31: -4964555800879844387
+      Bringer-of-Death-SpritSheet_11: -187061038009810156
+      Bringer-of-Death-SpritSheet_60: 6332021275310799178
+      Bringer-of-Death-SpritSheet_56: 8521500246072281666
+      Bringer-of-Death-SpritSheet_15: 7875671365747817104
+      Bringer-of-Death-SpritSheet_77: 2340411753182567233
+      Bringer-of-Death-SpritSheet_98: -5090540181421502748
+      Bringer-of-Death-SpritSheet_64: -1868120325543435884
+      Bringer-of-Death-SpritSheet_87: 1828307515674810665
+      Bringer-of-Death-SpritSheet_30: 8914642584386402721
+      Bringer-of-Death-SpritSheet_89: -7503729718484205035
+      Bringer-of-Death-SpritSheet_79: 4377546807506432765
+      Bringer-of-Death-SpritSheet_108: -3064136009206308716
+      Bringer-of-Death-SpritSheet_107: 6101677501033488297
+      Bringer-of-Death-SpritSheet_40: -6237223263896097850
+      Bringer-of-Death-SpritSheet_33: -1554090680192844270
+      Bringer-of-Death-SpritSheet_63: -216337917939532555
+      Bringer-of-Death-SpritSheet_37: -4818586564699129774
+      Bringer-of-Death-SpritSheet_82: 3114276937657238421
+      Bringer-of-Death-SpritSheet_97: -6803309475872195314
+      Bringer-of-Death-SpritSheet_104: -434415148876518964
+      Bringer-of-Death-SpritSheet_16: -8871867928371661369
+      Bringer-of-Death-SpritSheet_85: 5384520045850947666
+      Bringer-of-Death-SpritSheet_10: -6243590176172294242
+      Bringer-of-Death-SpritSheet_45: 6824449332584486427
+      Bringer-of-Death-SpritSheet_102: 5768248114369273202
+      Bringer-of-Death-SpritSheet_69: -6973164170239365443
+      Bringer-of-Death-SpritSheet_94: -4458930917063361075
+      Bringer-of-Death-SpritSheet_62: 7215576535354308736
+      Bringer-of-Death-SpritSheet_57: -4221278012398908484
+      Bringer-of-Death-SpritSheet_1: 8445469178646879675
+      Bringer-of-Death-SpritSheet_21: 751812126289047221
+      Bringer-of-Death-SpritSheet_0: -750047184722822154
+      Bringer-of-Death-SpritSheet_22: 6430574574124883500
+      Bringer-of-Death-SpritSheet_20: 8231058446179839085
+      Bringer-of-Death-SpritSheet_17: 5282158534819968045
+      Bringer-of-Death-SpritSheet_2: -5923306537521942286
+      Bringer-of-Death-SpritSheet_72: -6003202694090023875
+      Bringer-of-Death-SpritSheet_105: -8575019474698069270
+      Bringer-of-Death-SpritSheet_68: -5574837793213875895
+      Bringer-of-Death-SpritSheet_13: 973881123878733542
+      Bringer-of-Death-SpritSheet_23: -6766038691376649458
+      Bringer-of-Death-SpritSheet_92: -8157738268654294375
+      Bringer-of-Death-SpritSheet_43: 2778454290109986065
+      Bringer-of-Death-SpritSheet_38: -2960163153839071603
+      Bringer-of-Death-SpritSheet_28: 2090659836945643480
+      Bringer-of-Death-SpritSheet_14: -7142606862941313327
+      Bringer-of-Death-SpritSheet_39: -1378873467200105373
+      Bringer-of-Death-SpritSheet_4: -1846612928519130627
+      Bringer-of-Death-SpritSheet_27: 8385784872082410219
+      Bringer-of-Death-SpritSheet_84: 6503514103266941385
+      Bringer-of-Death-SpritSheet_99: 6902899454324343817
+      Bringer-of-Death-SpritSheet_78: 6142376479927427581
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
