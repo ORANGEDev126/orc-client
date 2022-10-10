@@ -50,6 +50,7 @@ public class Player
             yield return new WaitForSeconds((float)PlayGround.MOVE_FRAME / (float)1000);
         }
 
+        Debug.Log(string.Format("{0},{1} : {2},{3})", x, z, currX, currZ));
         animator.SetBool("Walk", false);
         moveCoroutine = null;
     }
@@ -71,7 +72,6 @@ public class Player
             var newZ = Mathf.Lerp(currZ, z, (float)i / tickCount);
             gameObject.transform.position = new Vector3( newX, 0, newZ);
 
-            Debug.Log(string.Format("{0},{1} : {4},{5} -> {2},{3} (speed : {6},{7})", x, z, newX, newZ, currX, currZ, currSpeedX, currSpeedZ));
             yield return new WaitForSeconds((float)PlayGround.TICK_COUNT / 1000);
         }
         animator.SetBool("Hit", false);
@@ -83,4 +83,8 @@ public class Player
         animator.SetBool("Attack", true);
     }
 
+    public bool CanMove()
+    {
+        return animator.GetCurrentAnimatorStateInfo(0).IsTag("idle") || animator.GetCurrentAnimatorStateInfo(0).IsTag("move");
+    }
 }

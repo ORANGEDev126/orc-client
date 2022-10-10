@@ -133,6 +133,6 @@ public class PlayGround : MonoBehaviour
     public bool CanMyCharacterMove()
     {
         var myPlayer = playerContainer[MyID];
-        return myPlayer.hitCoroutine == null;
+        return myPlayer.CanMove();
     }
 }
