@@ -72,6 +72,10 @@ public class JoystickManager : MonoBehaviour
 
     private void HandleInput(float magnitude, Vector2 normal)
     {
+        if(PlayGround.globalPlayGround.CanMyCharacterMove() == false)
+        {
+            return;
+        }
         var dir = GetDirection();
         if (dir != currDir)
         {

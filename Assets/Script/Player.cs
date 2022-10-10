@@ -7,6 +7,7 @@ public class Player
     private GameObject gameObject;
     private Animator animator;
     public Coroutine moveCoroutine;
+    public Coroutine hitCoroutine;
 
     public Player(GameObject gameObject)
     {
@@ -53,13 +54,31 @@ public class Player
         moveCoroutine = null;
     }
 
+    public IEnumerator KnockBack(float x, float z)
+    {
+        animator.SetBool("Hit", true);
+
+        float currX = gameObject.transform.position.x;
+        float currZ = gameObject.transform.position.z;
+        float currSpeedX = 0.0f;
+        float currSpeedZ = 0.0f;
+        int tickCount = PlayGround.TICK_COUNT / PlayGround.MOVE_FRAME;
+        for (int i = 0; i < tickCount; ++i) 
+        {
+            var newX = Mathf.SmoothDamp(currX, x, ref currSpeedX, (float)PlayGround.TICK_COUNT / 1000 * tickCount);
+            var newZ = Mathf.SmoothDamp(currZ, z, ref currSpeedZ, (float)PlayGround.TICK_COUNT / 1000 * tickCount);
+            gameObject.transform.Translate(new Vector3( newX, 0, newZ));
+
+            Debug.Log(string.Format("{0},{1} : {4},{5} -> {2},{3} (speed : {6},{7})", x, z, newX, newZ, currX, currZ, currSpeedX, currSpeedZ));
+            yield return new WaitForSeconds((float)PlayGround.TICK_COUNT / 1000);
+        }
+        animator.SetBool("Hit", false);
+        moveCoroutine = null;
+    }
+
     public void Attack()
     {
         animator.SetBool("Attack", true);
     }
 
-    public void Hit()
-    {
-        animator.SetBool("Hit", true);
-    }
 }

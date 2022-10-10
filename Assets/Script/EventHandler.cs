@@ -69,6 +69,6 @@ public class EventHandler
     public static void HandlePlayerAttackedNoti(byte[] packet)
     {
         Orc.PlayerAttackedNotiMessage message = Orc.PlayerAttackedNotiMessage.Parser.ParseFrom(packet);
-        PlayGround.globalPlayGround.BePlayerAttacked(message.PlayerId);
+        PlayGround.globalPlayGround.BePlayerAttacked(message.PlayerId, (float)message.X, (float)message.Y);
     }
 }

@@ -9,7 +9,7 @@ public class CameraAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        initialLocation = new Vector3(-5, 25, -5);
+        initialLocation = new Vector3(0, 25, -5);
     }
 
     public void SetTarget(GameObject target)

@@ -114,15 +114,25 @@ public class PlayGround : MonoBehaviour
             return;
         }
 
-        playerContainer[playerId].Attack();
+        var Player = playerContainer[playerId];
+        Player.Attack();
     }
 
-    public void BePlayerAttacked(long playerId)
+    public void BePlayerAttacked(long playerId, float x, float z)
     {
         if(!playerContainer.ContainsKey(playerId))
         {
             return;
         }
-        playerContainer[playerId].Hit();
+        var Player = playerContainer[playerId];
+
+        Player.hitCoroutine = StartCoroutine(Player.KnockBack(x, z));
+
+    }
+
+    public bool CanMyCharacterMove()
+    {
+        var myPlayer = playerContainer[MyID];
+        return myPlayer.hitCoroutine == null;
     }
 }
