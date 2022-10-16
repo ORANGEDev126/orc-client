@@ -66,10 +66,10 @@ public class Player
         int tickCount = PlayGround.TICK_COUNT / PlayGround.MOVE_FRAME;
         for (int i = 0; i < tickCount; ++i) 
         {
-            //var newX = Mathf.SmoothDamp(currX, x, ref currSpeedX, (float)PlayGround.TICK_COUNT / 1000 * tickCount);
-            //var newZ = Mathf.SmoothDamp(currZ, z, ref currSpeedZ, (float)PlayGround.TICK_COUNT / 1000 * tickCount);
-            var newX = Mathf.Lerp(currX, x, (float)i / tickCount);
-            var newZ = Mathf.Lerp(currZ, z, (float)i / tickCount);
+            var newX = Mathf.SmoothDamp(currX, x, ref currSpeedX, (float)PlayGround.TICK_COUNT / 1000 * tickCount);
+            var newZ = Mathf.SmoothDamp(currZ, z, ref currSpeedZ, (float)PlayGround.TICK_COUNT / 1000 * tickCount);
+            //var newX = Mathf.Lerp(currX, x, (float)i / tickCount);
+            //var newZ = Mathf.Lerp(currZ, z, (float)i / tickCount);
             gameObject.transform.position = new Vector3( newX, 0, newZ);
 
             yield return new WaitForSeconds((float)PlayGround.TICK_COUNT / 1000);
@@ -80,7 +80,7 @@ public class Player
 
     public void Attack()
     {
-        animator.SetBool("Attack", true);
+        animator.SetTrigger("Attack");
     }
 
     public bool CanMove()
