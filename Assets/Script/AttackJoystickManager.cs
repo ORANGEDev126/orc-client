@@ -5,7 +5,6 @@ using UnityEngine;
 public class AttackJoystickManager : MonoBehaviour
 {
     public FixedJoystick joystick;
-    public Network network;
 
     public const double DRAW_THRESHOLD = 0.5;
     public const double SHOOT_THREADHOLD = 0.3;
@@ -46,13 +45,13 @@ public class AttackJoystickManager : MonoBehaviour
             {
                 var message = new Orc.ShootProjectileReqMessage();
                 message.Angle = angle.Value;
-                network.SendProtoMessage(Orc.Request.ShootProjectileReq, message);
+                Network.Get().SendProtoMessage(Orc.Request.ShootProjectileReq, message);
             }
         }
         else
         {
             var message = new Orc.AttackReqMessage();
-            network.SendProtoMessage(Orc.Request.AttackReq, message);
+            Network.Get().SendProtoMessage(Orc.Request.AttackReq, message);
         }
         angle = null;
     }

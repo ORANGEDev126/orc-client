@@ -5,7 +5,6 @@ using UnityEngine;
 public class JoystickManager : MonoBehaviour
 {
     public FixedJoystick joystick;
-    public Network network;
 
     private Orc.Direction currDir = Orc.Direction.NoneDir;
     public const double THRESHOLD = 0.3;
@@ -83,7 +82,7 @@ public class JoystickManager : MonoBehaviour
             Orc.MoveJogReqMessage message = new Orc.MoveJogReqMessage();
             message.Dir = currDir;
 
-            network.SendProtoMessage(Orc.Request.MoveJogReq, message);
+            Network.Get().SendProtoMessage(Orc.Request.MoveJogReq, message);
         }
     }
 
@@ -91,6 +90,6 @@ public class JoystickManager : MonoBehaviour
     {
         Orc.MoveJogReqMessage message = new Orc.MoveJogReqMessage();
         message.Dir = Orc.Direction.NoneDir;
-        network.SendProtoMessage(Orc.Request.MoveJogReq, message);
+        Network.Get().SendProtoMessage(Orc.Request.MoveJogReq, message);
     }
 }

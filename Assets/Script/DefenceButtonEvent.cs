@@ -18,6 +18,7 @@ public class DefenceButtonEvent : MonoBehaviour
 
     public void OnClickDefenceButton()
     {
-        Debug.Log("OnClickDefenceButton");
+        Orc.DefenceReqMessage message = new Orc.DefenceReqMessage();
+        Network.Get().SendProtoMessage(Orc.Request.DefenceReq, message);
     }
 }

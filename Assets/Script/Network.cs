@@ -24,9 +24,17 @@ public class Network : MonoBehaviour
     public int ServerPort = 1004;
     public Dictionary<Orc.Notification, PacketHandler> Handler = new Dictionary<Orc.Notification, PacketHandler>();
 
+    static Network network = null;
+
     // Start is called before the first frame update
     void Start()
     {
+        if(network != null)
+        {
+            Debug.LogError("the network object has to be only one.");
+        }
+
+        network = this;
         tcpClient = new TcpClient(ServerIP, ServerPort);
         stream = tcpClient.GetStream();
         Debug.Log("[Network] connect to server");
@@ -39,6 +47,13 @@ public class Network : MonoBehaviour
         Handler[Orc.Notification.ProjectileAttackNoti] = EventHandler.HandleProjectileAttackNoti;
         Handler[Orc.Notification.AttackPlayerNoti] = EventHandler.HandleAttackPlayerNoti;
         Handler[Orc.Notification.PlayerAttackedNoti] = EventHandler.HandlePlayerAttackedNoti;
+        Handler[Orc.Notification.PlayerDefenceNoti] = EventHandler.HandleDefenceNoti;
+        Handler[Orc.Notification.PlayerAttackDefenceNoti] = EventHandler.HandleAttackDefenceNoti;
+    }
+
+    private void OnDestroy()
+    {
+        network = null;
     }
 
     // Update is called once per frame
@@ -78,7 +93,7 @@ public class Network : MonoBehaviour
 
     public void SendProtoMessage(Orc.Request id, Google.Protobuf.IMessage message)
     {
-        if(stream == null)
+        if (stream == null)
         {
             Debug.Log("[Network] stream is null when send message");
             return;
@@ -100,5 +115,10 @@ public class Network : MonoBehaviour
         Array.Copy(serializedMessage, 0, writeBuf, HEADER_LENGTH, serializedMessage.Length);
 
         stream.Write(writeBuf, 0, writeBuf.Length);
+    }
+
+    public static Network Get()
+    {
+        return network;
     }
 }
