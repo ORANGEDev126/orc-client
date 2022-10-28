@@ -57,7 +57,7 @@ public class Player
 
     public IEnumerator KnockBack(float x, float z)
     {
-        animator.SetBool("Hit", true);
+        animator.SetTrigger("Hit");
 
         float currX = gameObject.transform.position.x;
         float currZ = gameObject.transform.position.z;
@@ -74,7 +74,6 @@ public class Player
 
             yield return new WaitForSeconds((float)PlayGround.TICK_COUNT / 1000);
         }
-        animator.SetBool("Hit", false);
         hitCoroutine = null;
     }
 
@@ -86,5 +85,14 @@ public class Player
     public bool CanMove()
     {
         return animator.GetCurrentAnimatorStateInfo(0).IsTag("idle") || animator.GetCurrentAnimatorStateInfo(0).IsTag("move");
+    }
+
+    public void Defence()
+    {
+        animator.SetTrigger("DefenceHit");
+    }
+    public void TryToDefence()
+    {
+        animator.SetTrigger("Defence");
     }
 }

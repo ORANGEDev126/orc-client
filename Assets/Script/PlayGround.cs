@@ -135,4 +135,25 @@ public class PlayGround : MonoBehaviour
         var myPlayer = playerContainer[MyID];
         return myPlayer.CanMove();
     }
+
+    public void TryToDefence(long playerId)
+    {
+        if (!playerContainer.ContainsKey(playerId))
+        {
+            return;
+        }
+        var Player = playerContainer[playerId];
+        Player.TryToDefence();
+    }
+
+    public void Defence(long playerId)
+    {
+        if (!playerContainer.ContainsKey(playerId))
+        {
+            return;
+        }
+        var Player = playerContainer[playerId];
+        Player.Defence();
+    }
+
 }
