@@ -75,11 +75,11 @@ public class EventHandler
     public static void HandleDefenceNoti(byte[] packet)
     {
         Orc.PlayerDefenceNotiMessage message = Orc.PlayerDefenceNotiMessage.Parser.ParseFrom(packet);
-        PlayGround.globalPlayGround.Defence(message.PlayerId);
+        PlayGround.globalPlayGround.TryToDefence(message.PlayerId);
     }
     public static void HandleAttackDefenceNoti(byte[] packet)
     {
         Orc.PlayerAttackDefenceNotiMessage message = Orc.PlayerAttackDefenceNotiMessage.Parser.ParseFrom(packet);
-        PlayGround.globalPlayGround.TryToDefence(message.PlayerId);
+        PlayGround.globalPlayGround.Defence(message.PlayerId);
     }
 }
