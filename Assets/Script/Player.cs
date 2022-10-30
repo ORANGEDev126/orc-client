@@ -54,10 +54,13 @@ public class Player
         animator.SetBool("Walk", false);
         moveCoroutine = null;
     }
-
-    public IEnumerator KnockBack(float x, float z)
+    public void BeHit()
     {
         animator.SetTrigger("Hit");
+    }
+
+    public IEnumerator KnockBack(double x, double z)
+    {
 
         float currX = gameObject.transform.position.x;
         float currZ = gameObject.transform.position.z;
@@ -66,8 +69,8 @@ public class Player
         int tickCount = PlayGround.TICK_COUNT / PlayGround.MOVE_FRAME;
         for (int i = 0; i < tickCount; ++i) 
         {
-            var newX = Mathf.SmoothDamp(currX, x, ref currSpeedX, (float)PlayGround.TICK_COUNT / 1000 * tickCount);
-            var newZ = Mathf.SmoothDamp(currZ, z, ref currSpeedZ, (float)PlayGround.TICK_COUNT / 1000 * tickCount);
+            var newX = Mathf.SmoothDamp(currX, (float)x, ref currSpeedX, (float)PlayGround.TICK_COUNT / 1000 * tickCount);
+            var newZ = Mathf.SmoothDamp(currZ, (float)z, ref currSpeedZ, (float)PlayGround.TICK_COUNT / 1000 * tickCount);
             //var newX = Mathf.Lerp(currX, x, (float)i / tickCount);
             //var newZ = Mathf.Lerp(currZ, z, (float)i / tickCount);
             gameObject.transform.position = new Vector3( newX, 0, newZ);
@@ -90,6 +93,7 @@ public class Player
     public void Defence()
     {
         animator.SetTrigger("DefenceHit");
+
     }
     public void TryToDefence()
     {

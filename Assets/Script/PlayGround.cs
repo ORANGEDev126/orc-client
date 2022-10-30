@@ -118,15 +118,15 @@ public class PlayGround : MonoBehaviour
         Player.Attack();
     }
 
-    public void BePlayerAttacked(long playerId, float x, float z)
+    public void BePlayerAttacked(long playerId, double x, double z)
     {
         if(!playerContainer.ContainsKey(playerId))
         {
             return;
         }
-        var Player = playerContainer[playerId];
-
-        Player.hitCoroutine = StartCoroutine(Player.KnockBack(x, z));
+        var player = playerContainer[playerId];
+        player.BeHit();
+        player.hitCoroutine = StartCoroutine(player.KnockBack(x, z));
 
     }
 
@@ -142,18 +142,19 @@ public class PlayGround : MonoBehaviour
         {
             return;
         }
-        var Player = playerContainer[playerId];
-        Player.TryToDefence();
+        var player = playerContainer[playerId];
+        player.TryToDefence();
     }
 
-    public void Defence(long playerId)
+    public void Defence(long playerId, double x, double z)
     {
         if (!playerContainer.ContainsKey(playerId))
         {
             return;
         }
-        var Player = playerContainer[playerId];
-        Player.Defence();
+        var player = playerContainer[playerId];
+        player.Defence();
+        player.hitCoroutine = StartCoroutine(player.KnockBack(x, z));
     }
 
 }
