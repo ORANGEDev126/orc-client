@@ -64,15 +64,15 @@ public class Player
 
         float currX = gameObject.transform.position.x;
         float currZ = gameObject.transform.position.z;
-        float currSpeedX = 0.0f;
-        float currSpeedZ = 0.0f;
+        float currSpeedX = 50.0f;
+        float currSpeedZ = 50.0f;
         int tickCount = PlayGround.TICK_COUNT / PlayGround.MOVE_FRAME;
         for (int i = 0; i < tickCount; ++i) 
         {
-            var newX = Mathf.SmoothDamp(currX, (float)x, ref currSpeedX, (float)PlayGround.TICK_COUNT / 1000 * tickCount);
-            var newZ = Mathf.SmoothDamp(currZ, (float)z, ref currSpeedZ, (float)PlayGround.TICK_COUNT / 1000 * tickCount);
-            //var newX = Mathf.Lerp(currX, x, (float)i / tickCount);
-            //var newZ = Mathf.Lerp(currZ, z, (float)i / tickCount);
+            //var newX = Mathf.SmoothDamp(currX, (float)x, ref currSpeedX, (float)PlayGround.TICK_COUNT / 1000 * tickCount);
+            //var newZ = Mathf.SmoothDamp(currZ, (float)z, ref currSpeedZ, (float)PlayGround.TICK_COUNT / 1000 * tickCount);
+            var newX = Mathf.Lerp(currX, (float)x, (float)i / tickCount);
+            var newZ = Mathf.Lerp(currZ, (float)z, (float)i / tickCount);
             gameObject.transform.position = new Vector3( newX, 0, newZ);
 
             yield return new WaitForSeconds((float)PlayGround.TICK_COUNT / 1000);
