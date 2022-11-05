@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9061ae3c4f3f44f5ab9721d7ee8cb545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultPlayerPrefab: {fileID: 8189980434977739222, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
+  defaultPlayerPrefab: {fileID: 8189980434977739222, guid: 86a92a62e3c1ea44e953931bd4517802, type: 3}
   defaultProjectilePrefab: {fileID: 5800160979831887756, guid: 8c1271cc6019e704bb466ef31009902f, type: 3}
   cameraPrefab: {fileID: 9082110607540992557, guid: e8de7b3079bbb47a6a665527ecde6b83, type: 3}
 --- !u!114 &895468879
@@ -346,7 +346,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 1244732285}
-  network: {fileID: 895468876}
 --- !u!114 &895468880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +359,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 1864101074}
-  network: {fileID: 895468876}
 --- !u!1 &1212098789
 GameObject:
   m_ObjectHideFlags: 0

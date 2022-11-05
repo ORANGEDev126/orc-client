@@ -64,8 +64,8 @@ public class Player
 
         float currX = gameObject.transform.position.x;
         float currZ = gameObject.transform.position.z;
-        float currSpeedX = 50.0f;
-        float currSpeedZ = 50.0f;
+        //float currSpeedX = 50.0f;
+        //float currSpeedZ = 50.0f;
         int tickCount = PlayGround.TICK_COUNT / PlayGround.MOVE_FRAME;
         for (int i = 0; i < tickCount; ++i) 
         {
