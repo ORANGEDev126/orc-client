@@ -5,6 +5,8 @@ using System;
 public class Player
 {
     private GameObject gameObject;
+    private static GameObject hpBarResource;
+    private GameObject hpBar;
     private Animator animator;
     public Coroutine moveCoroutine;
     public Coroutine hitCoroutine;
@@ -13,6 +15,11 @@ public class Player
     {
         this.gameObject = gameObject;
         animator = gameObject.GetComponent<Animator>();
+        if (hpBarResource == null)
+        {
+            hpBarResource = UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefab/HP.prefab", typeof(GameObject)) as GameObject;
+        }
+        hpBar = UnityEngine.Object.Instantiate(hpBarResource);
     }
 
     public void DestroyPlayer()
