@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterHudComponent : MonoBehaviour
 {
@@ -24,6 +25,18 @@ public class CharacterHudComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hpBar.transform.position = Camera.main.WorldToScreenPoint(transform.position);
+        hpBar.transform.position = Camera.main.WorldToScreenPoint(transform.position) + new Vector3(0, 40, 0);
+    }
+
+    public void UpdateHp(int current, int max)
+    {
+        Debug.Log(string.Format("{0}/{1}", current, max));
+        var slider = hpBar.GetComponent<Slider>();
+        if (slider != null)
+        {
+            slider.minValue = 0;
+            slider.maxValue = max;
+            slider.value = current;
+        }
     }
 }

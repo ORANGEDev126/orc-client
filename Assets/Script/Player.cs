@@ -9,6 +9,13 @@ public class Player
     public Coroutine moveCoroutine;
     public Coroutine hitCoroutine;
 
+    public delegate void UpdateHpNoti(int current, int max);
+    public UpdateHpNoti UpdateHpDelegate;
+
+    // temporary player info
+    private int remainedHp;
+    private int maxHp;
+
     public Player(GameObject gameObject)
     {
         this.gameObject = gameObject;
@@ -100,4 +107,16 @@ public class Player
     {
         animator.SetTrigger("Defence");
     }
+
+    public void InitializeHp(int hp)
+    {
+        maxHp = remainedHp = hp;        
+    }
+
+    public void UpdateHp(int hp)
+    {
+        remainedHp = hp;
+        UpdateHpDelegate.Invoke(hp, maxHp);
+    }
+
 }

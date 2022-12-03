@@ -32,6 +32,13 @@ public class PlayGround : MonoBehaviour
         }
 
         Player player = new Player(playerObject);
+        CharacterHudComponent hudComponent = playerObject.GetComponent<CharacterHudComponent>();
+        if(hudComponent != null)
+        {
+            player.UpdateHpDelegate += hudComponent.UpdateHp;
+        }
+
+        player.InitializeHp(msg.RemainHp);
         playerContainer.Add(msg.Id, player);
     }
 
@@ -118,13 +125,14 @@ public class PlayGround : MonoBehaviour
         Player.Attack();
     }
 
-    public void BePlayerAttacked(long playerId, double x, double z)
+    public void BePlayerAttacked(long playerId, double x, double z, int remainedHp)
     {
         if(!playerContainer.ContainsKey(playerId))
         {
             return;
         }
         var player = playerContainer[playerId];
+        player.UpdateHp(remainedHp);
         player.BeHit();
         player.hitCoroutine = StartCoroutine(player.KnockBack(x, z));
 
@@ -146,13 +154,14 @@ public class PlayGround : MonoBehaviour
         player.TryToDefence();
     }
 
-    public void Defence(long playerId, double x, double z)
+    public void Defence(long playerId, double x, double z, int remainedHp)
     {
         if (!playerContainer.ContainsKey(playerId))
         {
             return;
         }
         var player = playerContainer[playerId];
+        player.UpdateHp(remainedHp);
         player.Defence();
         player.hitCoroutine = StartCoroutine(player.KnockBack(x, z));
     }
