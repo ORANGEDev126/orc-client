@@ -11,7 +11,7 @@ public class CharacterHudComponent : MonoBehaviour
     private GameObject canvas;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         canvas = GameObject.Find("Canvas");
 
@@ -28,14 +28,22 @@ public class CharacterHudComponent : MonoBehaviour
         hpBar.transform.position = Camera.main.WorldToScreenPoint(transform.position) + new Vector3(0, 40, 0);
     }
 
-    public void UpdateHp(int current, int max)
+    public void InitializeHp(int current, int max)
     {
-        Debug.Log(string.Format("{0}/{1}", current, max));
         var slider = hpBar.GetComponent<Slider>();
         if (slider != null)
         {
             slider.minValue = 0;
             slider.maxValue = max;
+            slider.value = current;
+        }
+    }
+
+    public void UpdateHp(int current)
+    {
+        var slider = hpBar.GetComponent<Slider>();
+        if (slider != null)
+        {
             slider.value = current;
         }
     }

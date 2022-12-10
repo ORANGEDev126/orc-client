@@ -36,9 +36,10 @@ public class PlayGround : MonoBehaviour
         if(hudComponent != null)
         {
             player.UpdateHpDelegate += hudComponent.UpdateHp;
+            player.InitializeHpDelegate += hudComponent.InitializeHp;
         }
 
-        player.InitializeHp(msg.RemainHp);
+        player.InitializeHp(msg.RemainHp, msg.MaxHp);
         playerContainer.Add(msg.Id, player);
     }
 
