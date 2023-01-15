@@ -1,18 +1,41 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
- 
+using VoltstroStudios.UnityWebBrowser.Core;
+
 public class TestWebCommunicator : MonoBehaviour
 {
+    [SerializeField] private BaseUwbClientManager ClientManager;
+    private WebBrowserClient WebBrowserClient;
+
+    private void Start()
+    {
+        WebBrowserClient = ClientManager.browserClient;
+    }
+
+    public void LoadCustomSite()
+    {
+        WebBrowserClient.LoadUrl("http://3.35.41.153/login");
+        WebBrowserClient.OnLoadFinish += WebBrowserClient_OnLoadFinish;
+    }
+
+    private void WebBrowserClient_OnLoadFinish(string url)
+    {
+        if (url.Contains("code="))
+        {
+            StartCoroutine(GetText(url));
+        }
+    }
 
     public void OnButtonClicked()
     {
-        StartCoroutine(GetText());
+        //StartCoroutine(GetText());
+        LoadCustomSite();
     }
 
-    IEnumerator GetText()
+    IEnumerator GetText(string url = "")
     {
-        UnityWebRequest www = UnityWebRequest.Get("https://www.naver.com");
+        UnityWebRequest www = UnityWebRequest.Get(url);
         yield return www.SendWebRequest();
 
         if (www.result != UnityWebRequest.Result.Success)
