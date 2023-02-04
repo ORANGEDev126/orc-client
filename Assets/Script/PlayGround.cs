@@ -17,6 +17,10 @@ public class PlayGround : MonoBehaviour
     void Start()
     {
         globalPlayGround = this;
+
+        var message = new Orc.LoginReqMessage();
+        message.Code = TestWebCommunicator.GetLoginCode();
+        Network.Get().SendProtoMessage(Orc.Request.LoginReq, message);
     }
 
     public void EnterPlayer(Orc.PlayerMessage msg, bool isSelf)

@@ -49,6 +49,7 @@ public class Network : MonoBehaviour
         Handler[Orc.Notification.PlayerAttackedNoti] = EventHandler.HandlePlayerAttackedNoti;
         Handler[Orc.Notification.PlayerDefenceNoti] = EventHandler.HandleDefenceNoti;
         Handler[Orc.Notification.PlayerAttackDefenceNoti] = EventHandler.HandleAttackDefenceNoti;
+        Handler[Orc.Notification.LoginNoti] = EventHandler.HandleLoginNoti;
     }
 
     private void OnDestroy()

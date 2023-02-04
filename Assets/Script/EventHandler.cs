@@ -82,4 +82,10 @@ public class EventHandler
         Orc.PlayerAttackDefenceNotiMessage message = Orc.PlayerAttackDefenceNotiMessage.Parser.ParseFrom(packet);
         PlayGround.globalPlayGround.Defence(message.PlayerId, message.X, message.Y, message.RemainHp);
     }
+
+    public static void HandleLoginNoti(byte[] packet)
+    {
+        Orc.LoginNotiMessage Message = Orc.LoginNotiMessage.Parser.ParseFrom(packet);
+        Debug.Log(Message.AccessToken);
+    }
 }

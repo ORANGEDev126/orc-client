@@ -2,11 +2,19 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
 using VoltstroStudios.UnityWebBrowser.Core;
+using UnityEngine.SceneManagement;
 
 public class TestWebCommunicator : MonoBehaviour
 {
     [SerializeField] private BaseUwbClientManager ClientManager;
     private WebBrowserClient WebBrowserClient;
+
+    private static string lastLoginCode;
+
+    public static string GetLoginCode()
+    {
+        return lastLoginCode;
+    }
 
     private void Start()
     {
@@ -23,7 +31,17 @@ public class TestWebCommunicator : MonoBehaviour
     {
         if (url.Contains("code="))
         {
-            StartCoroutine(GetText(url));
+            //StartCoroutine(GetText(url));
+            string codeIndicator = "code=";
+            var codeUrl = url.Substring(url.IndexOf(codeIndicator) + codeIndicator.Length);
+            var lastCodePosition = codeUrl.IndexOf('&');
+            if(lastCodePosition != -1)
+            {
+                codeUrl = codeUrl.Substring(0, lastCodePosition);
+            }
+            lastLoginCode = codeUrl;
+            Debug.Log(codeUrl);
+            SceneManager.LoadScene("SampleScene");
         }
     }
 
